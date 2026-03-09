@@ -1,21 +1,7 @@
 import { useMemo, useState } from "react"
-import type { ChangeEvent } from "react"
+import { letterToImage } from "../../utils/librasImg"
 import "./style.scss"
 
-const imageModules = import.meta.glob("../../assets/abc/*.png", {
-    eager: true,
-    import: "default",
-}) as Record<string, string>
-
-const letterToImage = Object.entries(imageModules).reduce<Record<string, string>>(
-    (acc, [path, imageUrl]) => {
-        const fileName = path.split("/").pop() ?? ""
-        const letter = fileName.replace(".png", "").toUpperCase()
-        acc[letter] = imageUrl
-        return acc
-    },
-    {}
-)
 export default function TextFiel() {
     const [word, setWord] = useState("")
 

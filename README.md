@@ -1,73 +1,100 @@
-# React + TypeScript + Vite
+# ABC Libras
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicativo web que converte letras digitadas em imagens do alfabeto em Libras.
 
-Currently, two official plugins are available:
+## Sobre o projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O objetivo do projeto e facilitar o aprendizado visual do alfabeto em Libras.
+Ao digitar um texto, o app identifica as letras validas e exibe a imagem correspondente para cada caractere.
 
-## React Compiler
+## Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Conversao de texto para letras em Libras em tempo real.
+- Suporte a letras `A-Z` e `C cedilha` (`Ç`).
+- Ignora automaticamente caracteres sem imagem (numeros, pontuacao, simbolos, espacos).
+- Interface simples com lista de cards contendo imagem e letra.
 
-## Expanding the ESLint configuration
+## Tecnologias
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19
+- TypeScript
+- Vite
+- Sass (SCSS)
+- ESLint
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Como executar o projeto
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Pre-requisitos
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js 18+ (recomendado: versao LTS)
+- npm
+
+### Instalacao
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Ambiente de desenvolvimento
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+O Vite exibira a URL local (geralmente `http://localhost:5173`).
+
+### Build de producao
+
+```bash
+npm run build
+```
+
+### Visualizar build localmente
+
+```bash
+npm run preview
+```
+
+## Scripts disponiveis
+
+- `npm run dev`: inicia o servidor de desenvolvimento.
+- `npm run build`: executa checagem TypeScript e gera build de producao.
+- `npm run preview`: sobe um servidor para visualizar a build.
+- `npm run lint`: executa analise de lint com ESLint.
+
+## Estrutura de pastas
+
+```text
+src/
+  assets/
+    abc/                # Imagens das letras em Libras (A-Z e Ç)
+  components/
+    textField/
+      index.tsx         # Campo de texto e renderizacao das letras
+      style.scss        # Estilos do componente
+  styles/
+    config/             # Variaveis de cores, fontes e estilos base
+    global.scss         # Estilos globais
+  utils/
+    librasImg.ts        # Mapeamento dinamico letra -> imagem
+  App.tsx
+  main.tsx
+```
+
+## Como funciona a conversao
+
+1. O usuario digita no `textarea`.
+2. O texto e convertido para maiusculo.
+3. Cada caractere e comparado com o dicionario `letterToImage`.
+4. Somente letras com imagem disponivel sao renderizadas na tela.
+
+## Melhorias futuras
+
+- Suporte a numeros em Libras.
+- Suporte a palavras/sinais completos.
+- Botao para limpar texto e exportar resultado.
+- Melhorias de acessibilidade (navegacao por teclado e leitura de tela).
+
+## Autor
+
+Projeto desenvolvido por Rebeca Caroba com estudo de React + TypeScript aplicado a acessibilidade e Libras.

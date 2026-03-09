@@ -1,0 +1,46 @@
+@import '../../styles/config/variables';
+.text-field {
+    padding: 20px;
+
+    .text-field-input {
+        width: 100%;
+        margin-bottom: 1rem;
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    }
+
+    .text-field-main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        
+        .text-field-letters {
+            background-color: $c-first-light;
+            
+            .text-field-img {        
+                width: clamp(80px, 43vw, 200px); // clamp(min, preferred, max)
+                height: clamp(80px, 43vw, 200px);
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            
+            span {
+                font-weight: bold;
+                text-align: center;
+                display: block;
+                width: 100%;
+                font-size: 24px;
+            }
+        }
+    }   
+}

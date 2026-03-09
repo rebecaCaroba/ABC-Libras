@@ -9,3 +9,9 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: $c-first;
 }
+
+header {
+    background-color: $c-first-light;
+    padding: 20px;
+    text-align: center;
+}
